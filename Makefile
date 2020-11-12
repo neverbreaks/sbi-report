@@ -9,6 +9,7 @@ clean:
 	-@rm -rf build/
 	-@rm -rf dist/
 	-@rm -rf *.egg-info
+	-@rm -rf .pytest_cache/
 
 build:
 	@$(PYTHON) setup.py sdist bdist_wheel

@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import pandas as pd
 from bs4 import BeautifulSoup
 
@@ -13,7 +12,15 @@ def extract_trades(rpts_path: str) -> pd.DataFrame:
       :trades: pandas.DataFrame with trades
     """
     p = Path(rpts_path)
-    files = p.glob("*.html")
+
+    if not p.exists():
+        raise Exception(f"File or folder {rpts_path} does not exist")
+
+    files = []
+    if p.is_dir():
+        files = p.glob("*.html")
+    else:
+        files = [rpts_path]
 
     reports = {}
     alltrades = []
