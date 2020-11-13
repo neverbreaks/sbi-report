@@ -23,9 +23,12 @@ build:
 testpypi:
 	@$(PYTHON) -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
+pypi:
+	@$(PYTHON) -m twine upload dist/*
+
 publish:
 	@$(MAKE) clean
 	@$(MAKE) build
-	@$(MAKE) testpypi
+	@$(MAKE) pypi
 
 
